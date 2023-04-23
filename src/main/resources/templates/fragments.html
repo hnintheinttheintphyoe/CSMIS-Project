@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="html_head">
+<meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{/dashboard/css/app.css}">
+    <link rel="stylesheet" th:href="@{/dashboard/vendor/feather-icons-web/feather.css}">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/dashboard/css/style.css}">
+    <link rel="stylesheet" th:href="@{/dashboard/css/myStyle.css}">
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+    rel="stylesheet"
+  />
+    
+    
+   
+    
+</head>
+<body>
+ <!-- sidebar-start -->
+                 <div th:fragment="html_sidebar" class="col-12  col-lg-3 col-xl-2 vh-100 sidebar">
+                <div class="d-flex justify-content-between mt-3 brand-nav my-1"> 
+                    <div class="d-flex justify-content-center align-items-center">
+                      <span class=""> 
+                           <img th:src="@{/dashboard/img/logo.png}" class="img-logo">
+                        </span>
+                    <span class="font-weight-bold h4 text-primary mb-0">CSMIS</span>
+                </div>
+                    
+                <button class="btn btn-light d-block d-lg-none">
+                <i class="feather feather-x text-primary close-sidebar"></i>
+            </button>
+            </div>
+            <div class="nav-menu mt-1">
+                <ul>
+                    <li class="menu-item">
+                        <a href="/admin/dashboard" class="menu-item-link active">
+                        <span>
+                            <i class="feather-home"></i>
+                            <span>Dashboard</span>
+                        </span>
+                    </a>
+                        
+                    
+                    </li>
+
+                    <li class="menu-title">
+                        <span>Admin Data</span>
+                    </li>
+                     <li class="menu-item">
+                        <a href="/adminRegister" class="menu-item-link">
+                        <span>
+                            <i class="feather-film"></i>
+                            <span>Register</span>
+                        </span>
+                       
+                    </a>
+                        
+                    </li>
+                    <li class="menu-item">
+                        <a href="/import" class="menu-item-link">
+                        <span>
+                            <i class="feather-film"></i>
+                            <span>Import File List</span>
+                        </span>
+                       
+                    </a>
+                        
+                    </li>
+                    <li class="menu-item">
+                        <a href="restaurantForm.html" class="menu-item-link ">
+                        <span>
+                            <i class="feather-grid"></i>
+                            <span>restaurant Form </span>
+                        </span>
+                        
+                    </a>
+                        
+                    </li>
+                    <li class="menu-item">
+                        <a href="paidvouncherForm.html" class="menu-item-link ">
+                        <span>
+                            <i class="feather-grid"></i>
+                            <span> Vouncher Form </span>
+                        </span>
+                        
+                    </a>
+                        
+                    </li>
+                    <li class="menu-item">
+                        <a href="employeeList.html" class="menu-item-link ">
+                        <span>
+                            <i class="fa-solid fa-users"></i>
+                            <span>Employee List</span>
+                        </span>
+                        
+                    </a>
+                        
+                    </li>
+                    <li class="menu-item">
+                        <a href="feedbackList.html" class="menu-item-link ">
+                        <span>
+                           <i class="fa-solid fa-list-check"></i>
+                            <span>Feedback List</span>
+                        </span>
+                       
+                    </a>
+                        
+                    </li>
+                    <li class="menu-item">
+                        <a href="costList.html" class="menu-item-link ">
+                        <span>
+                            <i class="fa-solid fa-money-check-dollar"></i>
+                            <span>Cost List</span>
+                        </span>
+                       
+                    </a>
+                        
+                    </li>
+                    <li class="menu-item">
+                        <a href="avoidmeatList.html" class="menu-item-link ">
+                        <span>
+                            <i class="fa-solid fa-message"></i>
+                            <span>Avoid Meat List</span>
+                        </span>
+                       
+                    </a>
+                        
+                    </li>
+                    <li class="menu-item">
+                        <a href="paidvouncherList.html" class="menu-item-link ">
+                        <span>
+                            <i class="fa-solid fa-list-check"></i>
+                            <span>Paid Vovncher List</span>
+                        </span>
+                       
+                    </a>
+                        
+                    </li>
+                    <li class="menu-item">
+                        <a href="mailnotiList.html" class="menu-item-link ">
+                        <span>
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>Mail Noti List</span>
+                        </span>
+                       
+                    </a>
+                        
+                    </li>
+                    <li class="menu-item">
+                        <a href="restaurantList.html" class="menu-item-link ">
+                        <span>
+                            <i class="fa-solid fa-utensils"></i>
+                            <span>Restaurant List</span>
+                        </span>
+                       
+                    </a>
+                        
+                    </li>
+                    <li class="menu-item">
+                        <a href="RegisterList.html" class="menu-item-link ">
+                        <span>
+                            <i class="fa-solid fa-users-gear"></i>
+                            <span>Register List</span>
+                        </span>
+                       
+                    </a>
+                        
+                    </li>
+                    <li class="menu-item">
+                        <a href="withoutRegiserList.html" class="menu-item-link ">
+                        <span>
+                            <i class="fa-solid fa-users"></i>
+                            <span>No Register List</span>
+                        </span>
+                       
+                    </a>
+                        
+                    </li>
+                    <li class="menu-item">
+                        <a href="registerNoest.html" class="menu-item-link ">
+                        <span>
+                            <i class="fa-solid fa-users"></i>
+                            <span>Register Noeat List</span>
+                        </span>
+                       
+                    </a>
+                        
+                    </li>
+                    
+                   
+                   
+                
+                
+                
+            </ul>
+            </div>
+
+            </div>
+<!-- sidebar end -->
+<!-- header start -->
+ <div th:fragment="html_header" class="row header mb-4">
+                    <div class="col-12 ">
+                    <div class="p-2 bg-primary rounded mt-2 d-flex justify-content-between align-items-center">
+                        <button class="sidebar-show btn btn-primary d-block d-lg-none p-1">
+                            <i class="feather feather-menu " style="font-size: 25px;"></i>
+                        </button>
+                        <form class=" d-none d-md-block">
+                            <div class="form-inline">
+                                <input type="text" class="form-control mr-2 bg-light"> 
+                                <button class="btn btn-light">
+                                    <i class="feather-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                        <div class="dropdown ">
+                            <button class="btn btn-light dropdown-toggle shadow-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="img/user/avatar1.jpg" alt="" class="user-img">
+                              Hnin Theint Theint
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item p-3" href="#" data-toggle="modal" data-target="#profileSetupModal"><i class="feather-user mr-2 text-primary"></i>Setup Profile</a>
+                             
+                              <a class="dropdown-item p-3" href="#"><i class="feather-log-out mr-2 text-primary"></i>Logout</a>
+                            </div>
+                          </div>
+                          
+                    </div>
+                    
+                    </div>
+                </div>
+                <!-- header-end -->
+           
+
+<div th:fragment="html_script">
+<script th:src="@{/dashboard/vendor/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/dashboard/js/popper.min.js}"></script>
+<script th:src="@{/dashboard/js/jquery.waypoints.min.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js}"></script>
+<script th:src="@{/dashboard/vendor/chart_js/Chart.min.js}"></script>
+<script th:src="@{/dashboard/js/app.js}"></script>
+<script th:src="@{/dashboard/js/dashboard.js}"></script>
+<script th:src="@{/dashboard/vendor/data_table/jquery.dataTables.min.js}"></script>
+<script th:src="@{/dashboard/vendor/data_table/dataTables.bootstrap4.min.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js}"></script>
+  <script th:src="@{https://cdn.jsdelivr.net/npm/fullcalendar@6.1.5/index.global.min.js}"></script>
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
+  ></script>
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
+  
+</div>
+
+        
+       
+  
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: html_head}" />
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" th:href="@{/dashboard/css/app.css}">
+<link rel="stylesheet"
+	th:href="@{/dashboard/vendor/feather-icons-web/feather.css}">
+<link rel="stylesheet"
+	th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}"
+	integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" th:href="@{/dashboard/css/style.css}">
+<link rel="stylesheet" th:href="@{/dashboard/css/myStyle.css}">
+</head>
+<body>
+	<section class="container-fluid">
+		<div class="row">
+			<!-- sidebar start -->
+
+			<div th:replace="~{fragments :: html_sidebar}"></div>
+
+			<!-- sidebar end -->
+			<div class="col-12  col-lg-9  col-xl-10 vh-100 content ">
+				<!-- header start -->
+				<div th:replace="~{fragments :: html_header}"></div>
+				<!-- header end -->
+				<!-- content start -->
+				<div class="row ">
+					<div class="col-12">
+						<div class="card mb-4">
+							<div class="card-body">
+								<div class="d-flex justify-content-between align-items-center">
+									<h4 class="mb-0">
+										<i class="feather-codepen text-primary"></i> Import Data List
+									</h4>
+									<button class="btn btn-outline-primary btn-sm full-page-btn">
+										<i class="feather-maximize-2 h4"></i>
+									</button>
+								</div>
+								<hr>
+
+								<div class="row d-flex justify-content-center vh-100">
+									<div class="col-xl-6 text-md-right mt-3">
+										<div class="card bg-light">
+											<div class="card-header text-left h4">
+												<i class="fa-solid fa-users text-primary"></i>User Data
+												Import
+											</div>
+											<div class="card-body margin-auto px-5 pt-3 pb-4">
+
+												<form  action="/admin/uploadUser" method="post"
+													 enctype='multipart/form-data'>
+													<div class="mb-3">
+														<label for="formFile" class="form-label"></label> <input
+															class="form-control" type="file" id="formFile" name="userFile">
+													</div>
+													<div class="float-center">
+														<button type="submit" class="btn btn-primary btn-change">User
+															File Import</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+									<div class="col-xl-6 text-md-right mt-3">
+										<div th:if="${message}" class="alert alert-success alert-dismissible fade show"
+											role="alert">
+											<strong th:text="${message}"></strong>
+											<button type="button" class="close" data-dismiss="alert"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="card bg-light">
+											<div class="card-header text-left h4">
+												<i class="fa-regular fa-rectangle-list text-primary"></i>Menu
+												Data Import
+											</div>
+											<div class="card-body margin-auto px-5 pt-3 pb-4">
+												<!-- <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div> -->
+
+												<form id="myform" action="/doFile" method="post"
+													th:object="${image}" enctype='multipart/form-data'>
+													<div class="mb-3">
+														<label for="formFile" class="form-label"></label> <input
+															class="form-control" type="file" id="formFile" name="pdf"
+															required>
+													</div>
+													<div class="float-center">
+														<button type="submit" class="btn btn-primary btn-change">Menu
+															File Import</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+									<div class="col-xl-6 text-md-right card-3">
+										<div class="card bg-light">
+											<div class="card-header text-left h4">
+												<i class="fa-solid fa-calendar-days text-primary"></i>Holiday
+												Data Import
+											</div>
+											<div class="card-body margin-auto px-5 pt-3 pb-4">
+
+												<form  action="/admin/holiday" method="post"
+													 enctype='multipart/form-data'>
+													<div class="mb-3">
+														<label for="formFile" class="form-label"></label> <input
+															class="form-control" type="file" id="formFile" name="dayFile">
+													</div>
+													<div class="float-center">
+														<button type="submit" class="btn btn-primary btn-change">Holiday
+															File Import</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+									<div class="col-xl-6 text-md-right mb-5 card-3">
+										<div class="card bg-light">
+											<div class="card-header text-left h4">
+												<i class="fa-solid fa-shop text-primary"></i> Doorlog
+												Data Import
+											</div>
+											<div class="card-body margin-auto px-5 pt-3 pb-4">
+
+												<form  action="/admin/doorlog" method="post"
+													 enctype='multipart/form-data'>
+													<div class="mb-3">
+														<label for="formFile" class="form-label"></label> <input
+															class="form-control" type="file" id="formFile" name="doorLog">
+													</div>
+													<div class="float-center">
+														<button type="submit" class="btn btn-primary btn-change">Doorlog
+															File Import</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+
+		</div>
+		</div>
+	</section>
+
+
+	<div th:replace="~{fragments :: html_script}" /></div>
+	<script>
+		$("#myform").validate({
+			rules : {
+				pdf : {
+
+				},
+
+			},
+
+			messages : {
+				pdf : {
+					required : "Please enter your menu file",
+
+				},
+
+				submitHandler : function(form) {
+					form.submit();
+				}
+
+			}
+		});
+	</script>
+
+</body>
+</html>
