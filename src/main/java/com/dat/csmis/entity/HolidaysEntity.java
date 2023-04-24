@@ -1,6 +1,5 @@
 package com.dat.csmis.entity;
 
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,7 @@ public class HolidaysEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(nullable = false)
-	private Date date;
+	private String date;
 	@Column(nullable = false)
 	private String holidays;
 
@@ -27,12 +26,11 @@ public class HolidaysEntity {
 	public void setId(long id) {
 		this.id = id;
 	}
-
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

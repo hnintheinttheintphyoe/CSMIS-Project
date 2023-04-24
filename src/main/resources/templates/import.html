@@ -45,6 +45,14 @@
 
 								<div class="row d-flex justify-content-center vh-100">
 									<div class="col-xl-6 text-md-right mt-3">
+									<div th:if="${messageEmp}" class="alert alert-success alert-dismissible fade show"
+											role="alert">
+											<strong th:text="${messageEmp}"></strong>
+											<button type="button" class="close" data-dismiss="alert"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
 										<div class="card bg-light">
 											<div class="card-header text-left h4">
 												<i class="fa-solid fa-users text-primary"></i>User Data
@@ -52,11 +60,11 @@
 											</div>
 											<div class="card-body margin-auto px-5 pt-3 pb-4">
 
-												<form  action="/admin/uploadUser" method="post"
+												<form id="empform" action="/admin/uploadUser" method="post"
 													 enctype='multipart/form-data'>
 													<div class="mb-3">
 														<label for="formFile" class="form-label"></label> <input
-															class="form-control" type="file" id="formFile" name="userFile">
+															class="form-control" type="file" id="formFile" name="userFile" required>
 													</div>
 													<div class="float-center">
 														<button type="submit" class="btn btn-primary btn-change">User
@@ -67,7 +75,7 @@
 										</div>
 									</div>
 									<div class="col-xl-6 text-md-right mt-3">
-										<div th:if="${message}" class="alert alert-success alert-dismissible fade show"
+										<div th:if="${message}" th:class="${color}"
 											role="alert">
 											<strong th:text="${message}"></strong>
 											<button type="button" class="close" data-dismiss="alert"
@@ -99,6 +107,14 @@
 										</div>
 									</div>
 									<div class="col-xl-6 text-md-right card-3">
+									<div th:if="${messageHoli}" th:class="${color}"
+											role="alert">
+											<strong th:text="${messageHoli}"></strong>
+											<button type="button" class="close" data-dismiss="alert"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
 										<div class="card bg-light">
 											<div class="card-header text-left h4">
 												<i class="fa-solid fa-calendar-days text-primary"></i>Holiday
@@ -106,11 +122,11 @@
 											</div>
 											<div class="card-body margin-auto px-5 pt-3 pb-4">
 
-												<form  action="/admin/holiday" method="post"
+												<form id="holiform" action="/admin/holiday" method="post"
 													 enctype='multipart/form-data'>
 													<div class="mb-3">
 														<label for="formFile" class="form-label"></label> <input
-															class="form-control" type="file" id="formFile" name="dayFile">
+															class="form-control" type="file" id="formFile" name="dayFile" required>
 													</div>
 													<div class="float-center">
 														<button type="submit" class="btn btn-primary btn-change">Holiday
@@ -121,6 +137,14 @@
 										</div>
 									</div>
 									<div class="col-xl-6 text-md-right mb-5 card-3">
+									<div th:if="${messageDoor}" th:class="${color}"
+											role="alert">
+											<strong th:text="${messageDoor}"></strong>
+											<button type="button" class="close" data-dismiss="alert"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
 										<div class="card bg-light">
 											<div class="card-header text-left h4">
 												<i class="fa-solid fa-shop text-primary"></i> Doorlog
@@ -128,11 +152,11 @@
 											</div>
 											<div class="card-body margin-auto px-5 pt-3 pb-4">
 
-												<form  action="/admin/doorlog" method="post"
+												<form id="doorform" action="/admin/doorlog" method="post"
 													 enctype='multipart/form-data'>
 													<div class="mb-3">
 														<label for="formFile" class="form-label"></label> <input
-															class="form-control" type="file" id="formFile" name="doorLog">
+															class="form-control" type="file" id="formFile" name="doorLog" required>
 													</div>
 													<div class="float-center">
 														<button type="submit" class="btn btn-primary btn-change">Doorlog
@@ -165,16 +189,52 @@
 	<div th:replace="~{fragments :: html_script}" /></div>
 	<script>
 		$("#myform").validate({
-			rules : {
+			messages : {
 				pdf : {
+					required : "Please choose menu file",
 
 				},
 
-			},
+				submitHandler : function(form) {
+					form.submit();
+				}
 
+			}
+		});
+		
+		
+		$("#empform").validate({
 			messages : {
-				pdf : {
-					required : "Please enter your menu file",
+				userFile : {
+					required : "Please choose Employee File!",
+
+				},
+
+				submitHandler : function(form) {
+					form.submit();
+				}
+
+			}
+		});
+		
+		$("#holiform").validate({
+			messages : {
+				dayFile : {
+					required : "Please choose holidays file",
+
+				},
+
+				submitHandler : function(form) {
+					form.submit();
+				}
+
+			}
+		});
+		
+		$("#doorform").validate({
+			messages : {
+				doorLog : {
+					required : "Please choose doorlog file",
 
 				},
 

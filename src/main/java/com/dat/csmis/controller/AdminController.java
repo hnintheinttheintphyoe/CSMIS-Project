@@ -23,11 +23,15 @@ public class AdminController {
 		return "import";
 	}
 	@PostMapping("/admin/uploadUser")
-	public String userFile(@RequestParam("userFile")MultipartFile file) {
+	public String userFile(@RequestParam("userFile")MultipartFile file, Model m) {
 		boolean condition=service.importEmployee(file);
 		if(condition) {
+			m.addAttribute("color", "alert alert-success alert-dismissible fade show");
+			m.addAttribute("messageEmp", "Success..!");
 			return "import";
 		}else {
+			m.addAttribute("color", "alert alert-danger alert-dismissible fade show");
+			m.addAttribute("messageEmp", "Failed..!");
 			return "import";
 
 		}
@@ -37,22 +41,30 @@ public class AdminController {
 		return "adminRegister";
 	}
 	@PostMapping("/admin/holiday")
-	public String dayFile(@RequestParam("dayFile")MultipartFile file) {
+	public String dayFile(@RequestParam("dayFile")MultipartFile file, Model m) {
 		boolean condition=service.importHoliday(file);
 		if(condition) {
+			m.addAttribute("color", "alert alert-success alert-dismissible fade show");
+			m.addAttribute("messageHoli", "Success..!");
 			return "import";
 		}else {
+			m.addAttribute("color", "alert alert-danger alert-dismissible fade show");
+			m.addAttribute("messageHoli", "Failed..!");
 			return "import";
 
 		}
 	}
 	@PostMapping("/admin/doorlog")
-	public String doorFile(@RequestParam("doorlog")MultipartFile file) {
+	public String doorFile(@RequestParam("doorLog")MultipartFile file, Model m) {
 		boolean condition=service.importDoorlog(file);
 		
 		if(condition) {
+			m.addAttribute("color", "alert alert-success alert-dismissible fade show");
+			m.addAttribute("messageDoor", "Success..!");
 			return "import";
 		}else {
+			m.addAttribute("color", "alert alert-danger alert-dismissible fade show");
+			m.addAttribute("messageDoor", "Failed..!");
 			return "import";
 
 		}

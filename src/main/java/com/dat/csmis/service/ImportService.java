@@ -2,6 +2,8 @@ package com.dat.csmis.service;
 
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -150,15 +152,18 @@ public class ImportService {
             	Date date= row.getCell(0).getDateCellValue();
             	String days=row.getCell(1).getStringCellValue();
             	
+            	DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            	String dateString = df.format(date);
+
             	HolidaysEntity entity = new HolidaysEntity();
-        		entity.setDate(date);
+        		entity.setDate(dateString);
         		entity.setHolidays(days);
         		            	
             	
             	repoH.save(entity);	
             }
         }
-        } catch (IOException | EncryptedDocumentException | InvalidFormatException e) {
+        } catch (Exception e) {
         	System.out.println("error is "+e.getMessage());
 			return false;
         }
@@ -180,16 +185,21 @@ public class ImportService {
                     continue;
                 }
             	
-            	int doorLog= (int) row.getCell(0).getNumericCellValue();
+            	Date date= row.getCell(0).getDateCellValue();
+            	int doorLog= (int) row.getCell(1).getNumericCellValue();
             	
+            	DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            	String dateString = df.format(date);
+
             	DoorLogEntity entity = new DoorLogEntity();
-        		entity.setDoorLog(String.valueOf(doorLog));;
+            	entity.setDate(dateString);
+        		entity.setDoorLog(String.valueOf(doorLog));
         		            	
             	
             	repoD.save(entity);	
             }
         }
-        } catch (IOException | EncryptedDocumentException | InvalidFormatException e) {
+        } catch (Exception e) {
         	System.out.println("error is "+e.getMessage());
 			return false;
         }
