@@ -9,7 +9,7 @@ import javax.persistence.Id;
 @Entity
 public class RestaurantEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(nullable = false)
 	private String name;
@@ -21,8 +21,17 @@ public class RestaurantEntity {
 	private String email;
 	@Column(nullable = false)
 	private String receiveBy;
-	@Column(columnDefinition = "VARCHAR(10) DEFAULT 'Active'")
+	@Column(nullable = false)
+	private int cost;
+	@Column(nullable = false)
 	private String status;
+	
+	public int getCost() {
+		return cost;
+	}
+	public void setCost(int cost) {
+		this.cost = cost;
+	}
 	public int getId() {
 		return id;
 	}

@@ -54,9 +54,7 @@ public class AuthenticateController {
             role = authority.getAuthority().substring("ROLE_".length());
         }
 		System.out.println("Role is "+role);
-		if ("ADMIN".equals(role)) {
-			
-		
+		if ("ADMIN".equals(role)) {	
             return "redirect:/admin/dashboard";
         } else if ("USER".equals(role)) {
         	return "redirect:/user/dashboard";
