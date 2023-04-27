@@ -81,6 +81,7 @@ public class ImportService {
             	entity.setDept(dept);
             	entity.setDivision(division);
             	entity.setStatus(status);
+            	entity.setPhoto("avatar.png");
             	newExcel.add(entity);
             	Optional<EmployeeEntity> emp=repoE.findByStaffId(String.valueOf(StaffId));
             	
@@ -89,7 +90,7 @@ public class ImportService {
             		 try {
                 		repoE.update(entity.getStaffId(),entity.getDoorLog(),entity.getEmail(),entity.getName(),
                 					entity.getPassword(),entity.getTeam(),entity.getRole(),entity.getDept(),
-                					entity.getDivision(),entity.getStatus(), ee.getId());
+                					entity.getDivision(),entity.getStatus(), entity.getPhoto(),ee.getId());
                 	 }catch(Exception e) {
                 		System.out.println("error on 1 is "+e.getMessage());
                 		

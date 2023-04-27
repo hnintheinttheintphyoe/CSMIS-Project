@@ -219,11 +219,11 @@
                         </form>
                         <div class="dropdown ">
                             <button class="btn btn-light dropdown-toggle shadow-lg" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="img/user/avatar1.jpg" alt="" class="user-img">
-                              Hnin Theint Theint
+                                <img th:src="@{/images/__${session.photo}__}" alt="" class="user-img">
+                             <span th:text="${session.name}"></span>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item p-3" href="#" data-toggle="modal" data-target="#profileSetupModal"><i class="feather-user mr-2 text-primary"></i>Setup Profile</a>
+                              <a class="dropdown-item p-3" href="/admin/profile?id=${session.id}" data-toggle="modal" data-target="#profileSetupModal"><i class="feather-user mr-2 text-primary"></i>Setup Profile</a>
                              
                               <a class="dropdown-item p-3" href="#"><i class="feather-log-out mr-2 text-primary"></i>Logout</a>
                             </div>
@@ -254,7 +254,7 @@
     type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
   ></script>
-    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
   
 </div>

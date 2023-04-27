@@ -35,11 +35,11 @@ public class AdminController {
 		boolean condition=service.importEmployee(file);
 		if(condition) {
 			m.addAttribute("color", "alert alert-success alert-dismissible fade show");
-			m.addAttribute("messageEmp", "Success..!");
+			m.addAttribute("messageEmp", "Successfully Imported..!");
 			return "import";
 		}else {
 			m.addAttribute("color", "alert alert-danger alert-dismissible fade show");
-			m.addAttribute("messageEmp", "Failed..!");
+			m.addAttribute("messageEmp", "Import Failed..!");
 			return "import";
 
 		}
@@ -53,11 +53,11 @@ public class AdminController {
 		boolean condition=service.importHoliday(file);
 		if(condition) {
 			m.addAttribute("color", "alert alert-success alert-dismissible fade show");
-			m.addAttribute("messageHoli", "Success..!");
+			m.addAttribute("messageHoli", "Successfully Imported..!");
 			return "import";
 		}else {
 			m.addAttribute("color", "alert alert-danger alert-dismissible fade show");
-			m.addAttribute("messageHoli", "Failed..!");
+			m.addAttribute("messageHoli", "Import Failed..!");
 			return "import";
 
 		}
@@ -68,11 +68,11 @@ public class AdminController {
 		
 		if(condition) {
 			m.addAttribute("color", "alert alert-success alert-dismissible fade show");
-			m.addAttribute("messageDoor", "Success..!");
+			m.addAttribute("messageDoor", "Successfully Imported..!");
 			return "import";
 		}else {
 			m.addAttribute("color", "alert alert-danger alert-dismissible fade show");
-			m.addAttribute("messageDoor", "Failed..!");
+			m.addAttribute("messageDoor", "Import Failed..!");
 			return "import";
 
 		}

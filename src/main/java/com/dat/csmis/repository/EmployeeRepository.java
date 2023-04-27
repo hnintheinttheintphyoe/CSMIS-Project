@@ -18,9 +18,9 @@ public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long> 
 	  @Modifying
 	  @Transactional
 	  @Query("update EmployeeEntity e set e.staffId= ?1, e.doorLog= ?2, e.email= ?3, e.name= ?4, "
-	      + "e.password= ?5, e.team= ?6, e.role= ?7, e.dept= ?8, e.division= ?9, e.status= ?10 "
-	      + "where e.id= ?11")
+	      + "e.password= ?5, e.team= ?6, e.role= ?7, e.dept= ?8, e.division= ?9, e.status= ?10, e.photo= ?11 "
+	      + "where e.id= ?12")
 	    void update(String staffId,String doorLog, String email,
 	          String name,String password,String team,String role,
-	          String dept,String division,String status, long id);
+	          String dept,String division,String status, String photo, long id);
 }

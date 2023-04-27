@@ -9,6 +9,6 @@ import com.dat.csmis.entity.EmployeeEntity;
 
 public interface AuthenticateRepository extends JpaRepository<EmployeeEntity, Long> {
 	
-	@Query("Select s from EmployeeEntity s where s.name=?1")
-	public EmployeeEntity findByName(String username);
+	@Query("Select s from EmployeeEntity s where s.email=?1")
+	public EmployeeEntity findByName(String email);
 }
