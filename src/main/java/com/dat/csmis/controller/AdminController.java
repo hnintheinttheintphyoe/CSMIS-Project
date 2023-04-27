@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dat.csmis.entity.PdfFileEntity;
+import com.dat.csmis.entity.PriceEntity;
 import com.dat.csmis.entity.RestaurantEntity;
 import com.dat.csmis.model.RestaurantModel;
 import com.dat.csmis.service.ImportService;
@@ -82,7 +83,8 @@ public class AdminController {
 		return new ModelAndView("adminRestaurant","res", new RestaurantModel());
 	}
 	@PostMapping("/admin/doRes")
-	public String doRestaurant(@ModelAttribute("res")RestaurantModel rm, RedirectAttributes ra) {
+	public String doRestaurant(@ModelAttribute("res")RestaurantModel rm,@RequestParam("datPrice")Double datprice,
+								@RequestParam("empPrice")Double empPrice, RedirectAttributes ra) {
 		if(rm!=null) {
 			RestaurantEntity entity= new RestaurantEntity();
 			entity.setName(rm.getName());
@@ -94,7 +96,14 @@ public class AdminController {
 			entity.setStatus("InActive");
 			serviceR.save(entity);
 			int a=serviceR.count();
+			System.out.println("Table count is "+a);
 			serviceR.updateA("Active", a);
+			serviceR.updateB("InActive", a);
+			
+			PriceEntity pe=new PriceEntity();
+			pe.setDatPrice(datprice);
+			pe.setEmpPrice(empPrice);
+			serviceR.saveP(pe);
 			ra.addAttribute("errorS", "Successfully added..!!");
 			return "redirect:/admin/res";	
 		}else {

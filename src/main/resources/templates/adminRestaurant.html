@@ -129,7 +129,10 @@
                                               
                                               <div class="row my-5">
                                 <div class="col-5 m-auto">
-                                    
+                                  
+                                  
+                                  <!-- modal -->
+                                  
                    				
                                 <form id="myform" name="myform" action="/admin/doRes" th:object="${res}" method="post">
                                   
@@ -155,8 +158,16 @@
                                             <input type="text" class="form-control" th:field="*{address}" name="address" id="exampleFormControlInput5" required>
                                           </div>
                                           <div class="mb-3">
-                                            <label for="exampleFormControlInput5" class="form-label"><i class="feather-home text-warning"></i>Cost</label>
+                                            <label for="exampleFormControlInput5" class="form-label"><i class="fa-solid fa-money-bill text-warning"></i>Cost</label>
                                             <input type="text" class="form-control" th:field="*{cost}" name="cost" id="exampleFormControlInput5" required>
+                                          </div>
+                                          <div class="mb-3">
+                                            <label for="exampleFormControlInput5" class="form-label"><i class="fa-solid fa-money-bill text-warning"></i>DAT Cost</label>
+                                            <input type="text" class="form-control" name="datPrice" id="exampleFormControlInput5" required>
+                                          </div>
+                                          <div class="mb-3">
+                                            <label for="exampleFormControlInput5" class="form-label"><i class="fa-solid fa-money-bill text-warning"></i>Employee Cost</label>
+                                            <input type="text" class="form-control" name="empPrice" id="exampleFormControlInput5" required>
                                           </div>
                                           
                                    

@@ -8,14 +8,12 @@ import javax.persistence.Id;
 @Entity
 public class PriceEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(nullable = false)
 	private double datPrice;
 	@Column(nullable = false)
 	private double empPrice;
-	@Column(nullable = false)
-	private double total;
 	public int getId() {
 		return id;
 	}
@@ -34,11 +32,4 @@ public class PriceEntity {
 	public void setEmpPrice(double empPrice) {
 		this.empPrice = empPrice;
 	}
-	public double getTotal() {
-		return total;
-	}
-	public void setTotal(double total) {
-		this.total = total;
-	}
-	
 }

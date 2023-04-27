@@ -4,9 +4,12 @@ package com.dat.csmis.service;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 import org.apache.poi.EncryptedDocumentException;
@@ -59,7 +62,7 @@ public class ImportService {
                     continue;
                 }
             	
-            	int StaffId = (int) row.getCell(0).getNumericCellValue();
+            	String StaffId = row.getCell(0).getStringCellValue();
             	int doorLog= (int) row.getCell(1).getNumericCellValue();
             	String name = row.getCell(2).getStringCellValue();
             	String email= row.getCell(3).getStringCellValue();
@@ -70,8 +73,9 @@ public class ImportService {
             	String division= row.getCell(8).getStringCellValue();
             	String status= row.getCell(9).getStringCellValue();
             	
+            	System.out.println(StaffId);
         		EmployeeEntity entity = new EmployeeEntity();
-        		entity.setStaffId(String.valueOf(StaffId));
+        		entity.setStaffId(StaffId);
             	entity.setDoorLog(String.valueOf(doorLog));
             	entity.setName(name);
             	entity.setEmail(email);
@@ -139,6 +143,7 @@ public class ImportService {
 	public boolean importHoliday(MultipartFile file){
 		boolean isFirstRow= true;
 		Workbook wb;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.ENGLISH);
 		try {
 			wb = WorkbookFactory.create(file.getInputStream());
 		
@@ -150,15 +155,25 @@ public class ImportService {
                     continue;
                 }
             	
-            	Date date= row.getCell(0).getDateCellValue();
+            	String date= row.getCell(0).getStringCellValue();
             	String days=row.getCell(1).getStringCellValue();
             	
-            	DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            	String dateString = df.format(date);
-
+            	date = date.replaceAll("(\\d)(?:st|nd|rd|th)", "$1");
+            	String[] substring = date.split(", ");
             	HolidaysEntity entity = new HolidaysEntity();
-        		entity.setDate(dateString);
-        		entity.setHolidays(days);
+            	for(var i=0; i< substring.length; i++) {
+            		String inputString = substring[0];
+            		String[] datedata=inputString.split(", ");
+            		String dateSringWithYear = datedata[0]+ " " + LocalDate.now().getYear();
+            		LocalDate localDate = LocalDate.parse(dateSringWithYear, formatter);
+                    System.out.println("Date is ==> "+ localDate);
+                    entity.setDate(String.valueOf(localDate));
+
+            	}
+            
+            	
+        			entity.setHolidays(days);
+
         		            	
             	
             	repoH.save(entity);	
@@ -186,8 +201,11 @@ public class ImportService {
                     continue;
                 }
             	
-            	Date date= row.getCell(0).getDateCellValue();
-            	int doorLog= (int) row.getCell(1).getNumericCellValue();
+            	String staffId = row.getCell(0).getStringCellValue();
+            	String name = row.getCell(1).getStringCellValue();
+            	Date date= row.getCell(2).getDateCellValue();
+            	int doorLog= (int) row.getCell(3).getNumericCellValue();
+            	String dept = row.getCell(4).getStringCellValue();
             	
             	DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             	String dateString = df.format(date);
@@ -195,8 +213,9 @@ public class ImportService {
             	DoorLogEntity entity = new DoorLogEntity();
             	entity.setDate(dateString);
         		entity.setDoorLog(String.valueOf(doorLog));
-        		            	
-            	
+        		entity.setStaffId(staffId);
+        		entity.setName(name);
+        		entity.setDept(dept);         	
             	repoD.save(entity);	
             }
         }

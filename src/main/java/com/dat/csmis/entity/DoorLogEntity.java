@@ -13,23 +13,38 @@ public class DoorLogEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(nullable = false)
+	private String StaffId;
+	@Column(nullable = false)
+	private String name;
+	@Column(nullable = false)
 	private String date;
 	@Column(nullable = false)
 	private String doorLog;
-	
-	
-	
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
+	@Column(nullable = false)
+	private String dept;
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
+	}
+	public String getStaffId() {
+		return StaffId;
+	}
+	public void setStaffId(String staffId) {
+		StaffId = staffId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 	public String getDoorLog() {
 		return doorLog;
@@ -37,5 +52,18 @@ public class DoorLogEntity {
 	public void setDoorLog(String doorLog) {
 		this.doorLog = doorLog;
 	}
+	public String getDept() {
+		return dept;
+	}
+	public void setDept(String dept) {
+		this.dept = dept;
+	}
+	
+	
+	
+	
+	
+	
+	
 
 }
